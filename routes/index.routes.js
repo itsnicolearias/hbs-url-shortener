@@ -1,6 +1,6 @@
 const express = require('express')
-const homeRoutes = require('./home')
-const authRoutes = require('./auth')
+const homeRoutes = require('./home.routes')
+const authRoutes = require('./auth.routes')
 
 const router = express.Router()
 

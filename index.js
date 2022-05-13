@@ -1,6 +1,6 @@
 const express = require('express')
 const { create } = require('express-handlebars')
-const indexRoutes = require('./routes/index')
+const indexRoutes = require('./routes/index.routes')
 const dotenv = require('dotenv')
 require('./database/db')
 
