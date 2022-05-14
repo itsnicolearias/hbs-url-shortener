@@ -29,9 +29,20 @@ const { origin } = req.body
         console.log(error)
         res.send('error: algo fallo')
     }
-   
-
 
 }
 
-module.exports = { getAllUrls, createUrl }
+//conectar boton con controlador
+const deleteUrl = async(req, res) => {
+   const { id } = req.params
+
+    try {
+        await Url.findByIdAndDelete(id)
+        res.redirect('/')
+    } catch (error) {
+        console.log(error)
+        res.send('error algo salio mal')
+    }
+}
+
+module.exports = { getAllUrls, createUrl, deleteUrl }
