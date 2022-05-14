@@ -24,6 +24,7 @@ app.set("views", "./views");
 //usar ruta publica
 //middleware, como incerceptan la informacion, tienen que ir abajo de las rutas
 app.use(express.static(__dirname + "/public"));
+app.use(express.urlencoded({extended: true}))
 app.use('/', indexRoutes)
 
 app.listen(PORT, () => console.log('Server running'))

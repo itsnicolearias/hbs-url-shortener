@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
+const enviromentConfig = require('./config')
 
-
-const URI = process.env.MONGODB_URI
 
 try {
-    mongoose.connect(URI)
+    mongoose.connect(enviromentConfig.mongo.url)
     console.log('DB connected')
 } catch (error) {
     console.log(error)

@@ -1,5 +1,5 @@
 const  mongoose  = require('mongoose')
-const { nanoid } = require('nanoid')
+
 
 const urlSchema = new mongoose.Schema({
     origin: {
@@ -10,8 +10,8 @@ const urlSchema = new mongoose.Schema({
     shortURL: {
         type: String,
         unique: true,
-        required: true,
-        default: nanoid(6)
+        required: true
+        
 
     }
 })
