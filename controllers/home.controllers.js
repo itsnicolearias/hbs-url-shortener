@@ -33,6 +33,44 @@ const { origin } = req.body
 }
 
 //conectar boton con controlador
+const updateUrlForm = async(req, res) => {
+    const { id } = req.params
+    try {
+        const url = await Url.findById(id).lean()
+        res.render('Home', { url })
+    } catch (error) {
+        console.log(error)
+        res.send('error algo salio mal')
+    }
+
+}
+
+const updateUrl = async(req, res) => {
+    const { id } = req.params
+    const { origin } = req.body
+    try {
+       await Url.findByIdAndUpdate(id, { origin: origin })
+       res.redirect('/')
+    } catch (error) {
+        console.log(error)
+        res.send('error algo salio mal')
+    }
+
+}
+
+const redirect = async(req, res) => {
+
+    const { shortURL } = req.params
+    try {
+        const urlDB = await Url.findOne({ shortURL: shortURL })
+        res.redirect(urlDB.origin)
+        
+    } catch (error) {
+        console.log(error)
+        res.send('error algo salio mal')
+    }
+}
+
 const deleteUrl = async(req, res) => {
    const { id } = req.params
 
@@ -45,4 +83,4 @@ const deleteUrl = async(req, res) => {
     }
 }
 
-module.exports = { getAllUrls, createUrl, deleteUrl }
+module.exports = { getAllUrls, createUrl, deleteUrl, updateUrlForm, updateUrl, redirect }
